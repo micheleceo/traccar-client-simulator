@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Rest_Client_Test.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Server_Name" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://localhost</Value>
+    </Setting>
+    <Setting Name="Server_Port" Type="System.String" Scope="User">
+      <Value Profile="(Default)">5055</Value>
+    </Setting>
+    <Setting Name="Client_ID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">111111</Value>
+    </Setting>
+    <Setting Name="Client_UserName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">admin</Value>
+    </Setting>
+    <Setting Name="Client_Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">admin</Value>
+    </Setting>
+    <Setting Name="Client_Timer" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

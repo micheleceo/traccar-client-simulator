@@ -1,0 +1,19 @@
+﻿/*****************************************************
+*                   VERSIONI                         *
+*****************************************************/
+
+TODO: Manage more clients
+
+
+v0.2
+
+- Gpx file loader and sender
+
+
+v0.1
+
+- Manual string send
+
+
+
+
