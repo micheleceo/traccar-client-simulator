@@ -1,4 +1,4 @@
-# Traccar C# client simulato
+# Traccar C# client simulator
 
 This project is a simple Traccar C# client simulator
 
