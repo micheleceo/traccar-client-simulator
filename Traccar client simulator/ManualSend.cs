@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace TraccarClientSimulator
 {
-     public partial class ManualSend : Form
+    public partial class ManualSend : Form
     {
         public struct request_parameters
         {
@@ -21,7 +21,7 @@ namespace TraccarClientSimulator
         }
         request_parameters req;
 
-        //  string sampleString = "http://localhost:5055/?id=111111&timestamp=1495181394&lat=40.9948996&lon=17.222538900000018&speed=0&bearing=355.43&altitude=111.379&batt=11";
+     
         string request_str = string.Empty;
       
         public ManualSend()
@@ -30,6 +30,7 @@ namespace TraccarClientSimulator
            
             req.server = Properties.Settings.Default.Server_Name;
             req.port = Properties.Settings.Default.Server_Port;
+
             req.id = Properties.Settings.Default.Client_ID;
             req.lat = Properties.Settings.Default.Client_lat;
             req.lon = Properties.Settings.Default.Client_lon;
@@ -40,23 +41,30 @@ namespace TraccarClientSimulator
         }
 
 
+        private void ManualSend_Load(object sender, EventArgs e)
+        {
+            textBox_request.Text = uri_build();
+        }
+
+
         private void button_send_Click(object sender, EventArgs e)
         {
             RestClient client = new RestClient();
-
             client.EndPoint = textBox_request.Text;
-
             textBox_Response.Text = client.MakeRequest(client.EndPoint);
         }
 
+
+        #region UTILITIES
 
         private string updateTime()
         {
           double totalSecond = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
           return ((int)totalSecond).ToString();
         }
+             
 
-        private void ManualSend_Load(object sender, EventArgs e)
+        private string uri_build()
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(req.server);
@@ -71,8 +79,12 @@ namespace TraccarClientSimulator
             builder.Append("&bearing=").Append(req.bearing);
             builder.Append("&altitude=").Append(req.altitude);
             builder.Append("&batt=").Append(req.batt);
-            textBox_request.Text = builder.ToString();
+            return builder.ToString();
         }
+
+        //  string sampleString = "http://localhost:5055/?id=111111&timestamp=1495181394&lat=40.9948996&lon=17.222538900000018&speed=0&bearing=355.43&altitude=111.379&batt=11";
+
+        #endregion UTILITIES
 
 
     }

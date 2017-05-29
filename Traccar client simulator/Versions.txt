@@ -5,6 +5,12 @@
 TODO: Manage more clients
 
 
+v0.3
+
+- Bug fixes
+- GPS trackpoints list scrolling
+
+
 v0.2
 
 - Gpx file loader and sender

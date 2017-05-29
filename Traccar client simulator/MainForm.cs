@@ -80,6 +80,7 @@ namespace TraccarClientSimulator
                 client.EndPoint += "&lat=" + listCoord[packetCount].lat.ToString().Replace(',', '.');
                 client.EndPoint += "&lon=" + listCoord[packetCount].lon.ToString().Replace(',', '.');
                 dataGridView1.Rows[packetCount].Selected = true;
+                dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.SelectedRows[0].Index;
 
                 // Extra parameters
                 string extraParameters = string.Empty;
@@ -96,7 +97,7 @@ namespace TraccarClientSimulator
                 if (checkBox_s4.Checked == true)
                     extraParameters += "&" + textBox_p4.Text + "=" + textBox_v4.Text;
 
-                client.MakeRequest(extraParameters);
+                client.MakeRequest(client.EndPoint+extraParameters);
                 packetCount++;
             }
             else timer_invio.Stop();
