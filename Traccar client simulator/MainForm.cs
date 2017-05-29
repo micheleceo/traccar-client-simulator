@@ -96,7 +96,7 @@ namespace TraccarClientSimulator
                 if (checkBox_s4.Checked == true)
                     extraParameters += "&" + textBox_p4.Text + "=" + textBox_v4.Text;
 
-               /* textBox_Response.Text = */client.MakeRequest(extraParameters);
+                client.MakeRequest(extraParameters);
                 packetCount++;
             }
             else timer_invio.Stop();

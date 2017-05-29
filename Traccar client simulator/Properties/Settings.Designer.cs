@@ -94,5 +94,77 @@ namespace TraccarClientSimulator.Properties {
                 this["Client_Timer"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("40.9948996")]
+        public string Client_lat {
+            get {
+                return ((string)(this["Client_lat"]));
+            }
+            set {
+                this["Client_lat"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("17.222538900000018")]
+        public string Client_lon {
+            get {
+                return ((string)(this["Client_lon"]));
+            }
+            set {
+                this["Client_lon"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("111.22")]
+        public string Client_altitude {
+            get {
+                return ((string)(this["Client_altitude"]));
+            }
+            set {
+                this["Client_altitude"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("55")]
+        public string Client_batt {
+            get {
+                return ((string)(this["Client_batt"]));
+            }
+            set {
+                this["Client_batt"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("355.43")]
+        public string Client_bearing {
+            get {
+                return ((string)(this["Client_bearing"]));
+            }
+            set {
+                this["Client_bearing"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("17.222538900000018")]
+        public string Client_speed {
+            get {
+                return ((string)(this["Client_speed"]));
+            }
+            set {
+                this["Client_speed"] = value;
+            }
+        }
     }
 }

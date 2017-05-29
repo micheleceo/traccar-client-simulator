@@ -35,27 +35,26 @@ namespace TraccarClientSimulator
       return MakeRequest("");
     }
 
-    public string MakeRequest(string parameters)
+    public string MakeRequest(string reqStr)
     {
-
-      var request = (HttpWebRequest)WebRequest.Create(EndPoint + parameters);
-      request.Credentials = new NetworkCredential(Properties.Settings.Default.Client_UserName, Properties.Settings.Default.Client_Password);
+        var request = (HttpWebRequest)WebRequest.Create(reqStr);
+        request.Credentials = new NetworkCredential(Properties.Settings.Default.Client_UserName, Properties.Settings.Default.Client_Password);
             
-      request.Method = Method.ToString();
-      request.ContentLength = 0;
-      request.ContentType = ContentType;
+        request.Method = Method.ToString();
+        request.ContentLength = 0;
+        request.ContentType = ContentType;
 
-      if (!string.IsNullOrEmpty(PostData) && Method == HttpVerb.POST)
-      {
-        var encoding = new UTF8Encoding();
-        var bytes = Encoding.GetEncoding("iso-8859-1").GetBytes(PostData);
-        request.ContentLength = bytes.Length;
-
-        using (var writeStream = request.GetRequestStream())
+        if (!string.IsNullOrEmpty(PostData) && Method == HttpVerb.POST)
         {
-          writeStream.Write(bytes, 0, bytes.Length);
+          var encoding = new UTF8Encoding();
+          var bytes = Encoding.GetEncoding("iso-8859-1").GetBytes(PostData);
+          request.ContentLength = bytes.Length;
+
+            using (var writeStream = request.GetRequestStream())
+            {
+              writeStream.Write(bytes, 0, bytes.Length);
+            }
         }
-      }
 
       using (var response = (HttpWebResponse)request.GetResponse())
       {

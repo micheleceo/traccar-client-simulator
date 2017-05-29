@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Rest_Client_Test.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TraccarClientSimulator.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="Server_Name" Type="System.String" Scope="User">
@@ -19,6 +19,24 @@
     </Setting>
     <Setting Name="Client_Timer" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="Client_lat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">40.9948996</Value>
+    </Setting>
+    <Setting Name="Client_lon" Type="System.String" Scope="User">
+      <Value Profile="(Default)">17.222538900000018</Value>
+    </Setting>
+    <Setting Name="Client_altitude" Type="System.String" Scope="User">
+      <Value Profile="(Default)">111.22</Value>
+    </Setting>
+    <Setting Name="Client_batt" Type="System.String" Scope="User">
+      <Value Profile="(Default)">55</Value>
+    </Setting>
+    <Setting Name="Client_bearing" Type="System.String" Scope="User">
+      <Value Profile="(Default)">355.43</Value>
+    </Setting>
+    <Setting Name="Client_speed" Type="System.String" Scope="User">
+      <Value Profile="(Default)">17.222538900000018</Value>
     </Setting>
   </Settings>
 </SettingsFile>
