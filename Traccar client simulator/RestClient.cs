@@ -30,11 +30,11 @@ namespace TraccarClientSimulator
       ContentType = "application/json";
     }
 
-    public string MakeRequest()
-    {
-      return MakeRequest("");
-    }
-
+     /// <summary>
+     /// Manage URI request
+     /// </summary>
+     /// <param name="reqStr">URI request</param>
+     /// <returns></returns>
     public string MakeRequest(string reqStr)
     {
         var request = (HttpWebRequest)WebRequest.Create(reqStr);
@@ -78,6 +78,7 @@ namespace TraccarClientSimulator
 
         return responseValue;
       }
+
     }
 
   } // class

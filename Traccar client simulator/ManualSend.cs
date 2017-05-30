@@ -6,6 +6,9 @@ namespace TraccarClientSimulator
 {
     public partial class ManualSend : Form
     {
+        /// <summary>
+        /// Request standard parameters
+        /// </summary>
         public struct request_parameters
         {
             public string server;
@@ -24,6 +27,9 @@ namespace TraccarClientSimulator
      
         string request_str = string.Empty;
       
+        /// <summary>
+        /// Implementing manual send requests with manual button press
+        /// </summary>
         public ManualSend()
         {
             InitializeComponent();
@@ -43,7 +49,7 @@ namespace TraccarClientSimulator
 
         private void ManualSend_Load(object sender, EventArgs e)
         {
-            textBox_request.Text = uri_build();
+            textBox_request.Text = URI_build();
         }
 
 
@@ -57,14 +63,22 @@ namespace TraccarClientSimulator
 
         #region UTILITIES
 
+        /// <summary>
+        /// Update time
+        /// </summary>
+        /// <returns></returns>
         private string updateTime()
         {
           double totalSecond = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
           return ((int)totalSecond).ToString();
         }
-             
-
-        private string uri_build()
+           
+        
+        /// <summary>
+        /// Build URI string
+        /// </summary>
+        /// <returns></returns>
+        private string URI_build()
         {
             StringBuilder builder = new StringBuilder();
             builder.Append(req.server);
