@@ -1,30 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using System.ComponentModel;
+
 
 namespace TraccarClientSimulator
 {
     public partial class ManualSend : Form
     {
-        /// <summary>
-        /// Request standard parameters
-        /// </summary>
-        public struct request_parameters
-        {
-            public string server;
-            public string port;
-            public string id;
-            public string timestamp;
-            public string lat;
-            public string lon;
-            public string altitude;
-            public string bearing;
-            public string batt;
-            public string speed;
-        }
         request_parameters req;
 
-     
         string request_str = string.Empty;
       
         /// <summary>
@@ -53,12 +40,40 @@ namespace TraccarClientSimulator
         }
 
 
+        #region BUTTTONS
+
         private void button_send_Click(object sender, EventArgs e)
         {
             RestClient client = new RestClient();
             client.EndPoint = textBox_request.Text;
             textBox_Response.Text = client.MakeRequest(client.EndPoint);
         }
+
+        private void buttonGetDevices_Click(object sender, EventArgs e)
+        {
+            RestClient client = new RestClient();
+            client.EndPoint = "http://localhost:8082/api/devices/";
+            textBox_Response.Text = client.MakeRequest(client.EndPoint);
+
+            List<Device> dispositivi = JsonConvert.DeserializeObject<List<Device>>(textBox_Response.Text);
+
+            var list = new BindingList<Device>(dispositivi);
+            dataGridView_Devices.DataSource = list;
+        }
+
+        private void button_GetUsersList_Click(object sender, EventArgs e)
+        {
+            RestClient client = new RestClient();
+            client.EndPoint = "http://localhost:8082/api/users/";
+            textBox_Response.Text = client.MakeRequest(client.EndPoint);
+
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(textBox_Response.Text);
+
+            var list = new BindingList<User>(users);
+            dataGridView_Devices.DataSource = list;
+        }
+
+        #endregion BUTTONS
 
 
         #region UTILITIES
@@ -69,11 +84,11 @@ namespace TraccarClientSimulator
         /// <returns></returns>
         private string updateTime()
         {
-          double totalSecond = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
-          return ((int)totalSecond).ToString();
+            double totalSecond = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+            return ((int)totalSecond).ToString();
         }
-           
-        
+
+
         /// <summary>
         /// Build URI string
         /// </summary>
@@ -96,10 +111,64 @@ namespace TraccarClientSimulator
             return builder.ToString();
         }
 
+
         //  string sampleString = "http://localhost:5055/?id=111111&timestamp=1495181394&lat=40.9948996&lon=17.222538900000018&speed=0&bearing=355.43&altitude=111.379&batt=11";
 
         #endregion UTILITIES
-
-
     }
+
+    #region STRUCTURES
+    /// <summary>
+    /// Device description
+    /// </summary>
+    public class Device
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string uniqueId { get; set; }
+        public string status { get; set; }
+        public string lastUpdate { get; set; }
+        public int positionId { get; set; }
+        public int groupId { get; set; }
+        public List<int> geofenceIds { get; set; }
+        public string phone { get; set; }
+        public string model { get; set; }
+        public string contact { get; set; }
+        public string category { get; set; }
+        //Variable attributes list
+        public Dictionary<string, string> attributes { get; set; }
+    }
+
+    /// <summary>
+    /// User description
+    /// </summary>
+    public class User
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
+        [JsonProperty("readonly")]
+        public bool read { get; set; }
+        public bool admin { get; set; }
+    }
+
+    /// <summary>
+    /// Request standard parameters
+    /// </summary>
+    public struct request_parameters
+    {
+        public string server;
+        public string port;
+        public string id;
+        public string timestamp;
+        public string lat;
+        public string lon;
+        public string altitude;
+        public string bearing;
+        public string batt;
+        public string speed;
+    }
+
+    #endregion STRUCTURES
+
 }

@@ -5,6 +5,9 @@
 TODO: Manage more clients
 
 
+v0.4
+- Sample requests added (devices and users)
+
 v0.3
 
 - Bug fixes
